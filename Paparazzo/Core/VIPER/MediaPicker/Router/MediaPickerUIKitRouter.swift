@@ -45,8 +45,8 @@ final class MediaPickerUIKitRouter: BaseUIKitRouter, MediaPickerRouter {
         )
         
         cropViewControllers.append(WeakWrapper(value: viewController))
-        
-        push(viewController, animated: false)
+
+        present(viewController, animated: false)
     }
     
     override func focusOnCurrentModule() {
