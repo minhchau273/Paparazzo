@@ -7,7 +7,8 @@ final class PhotoPreviewCell: PhotoCollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+
+        imageView.backgroundColor = .black
         imageView.contentMode = .scaleAspectFit
         
         progressIndicator.hidesWhenStopped = true
