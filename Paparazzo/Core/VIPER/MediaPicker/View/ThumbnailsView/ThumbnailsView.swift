@@ -75,6 +75,11 @@ final class ThumbnailsView: UIView, UICollectionViewDataSource, MediaRibbonLayou
     
     func setTheme(_ theme: ThemeType) {
         self.theme = theme
+        updateTheme()
+    }
+
+    func updateTheme() {
+       collectionView.backgroundColor = theme?.mediaThumbnailBackgroundColor
     }
     
     // MARK: - ThumbnailRibbonView

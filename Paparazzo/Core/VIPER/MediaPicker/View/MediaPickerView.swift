@@ -116,7 +116,8 @@ final class MediaPickerView: UIView, ThemeConfigurable {
         cameraControlsView.setTheme(theme)
         photoControlsView.setTheme(theme)
         thumbnailRibbonView.setTheme(theme)
-        
+
+        photoTitleLabel.isHidden = theme.photoTitleLabelHidden
         continueButton.setTitleColor(theme.cameraContinueButtonTitleColor, for: .normal)
         continueButton.titleLabel?.font = theme.cameraContinueButtonTitleFont
         

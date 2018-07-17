@@ -1,11 +1,16 @@
 public protocol MediaPickerRootModuleUITheme: AccessDeniedViewTheme {
-    
+
+    var photoControlsViewBackgroundColor: UIColor { get }
+    var photoTitleLabelHidden: Bool { get }
+
     var shutterButtonColor: UIColor { get }
     var shutterButtonDisabledColor: UIColor { get }
     var focusIndicatorColor: UIColor { get }
     var mediaRibbonSelectionColor: UIColor { get }
+    var mediaThumbnailBackgroundColor: UIColor { get }
     var cameraContinueButtonTitleColor: UIColor { get }
     var cameraContinueButtonTitleHighlightedColor: UIColor { get }
+    var cameraControlBackgroundColor: UIColor { get }
     var cameraButtonsBackgroundNormalColor: UIColor { get }
     var cameraButtonsBackgroundHighlightedColor: UIColor { get }
     var cameraButtonsBackgroundDisabledColor: UIColor { get }

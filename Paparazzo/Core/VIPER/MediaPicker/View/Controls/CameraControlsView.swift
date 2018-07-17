@@ -171,6 +171,8 @@ final class CameraControlsView: UIView, ThemeConfigurable {
         
         self.theme = theme
 
+        backgroundColor = theme.cameraControlBackgroundColor
+
         flashButton.setImage(theme.flashOffIcon, for: .normal)
         flashButton.setImage(theme.flashOnIcon, for: .selected)
 

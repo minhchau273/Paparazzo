@@ -11,9 +11,13 @@ public struct PaparazzoUITheme:
 
     // MARK: - MediaPickerRootModuleUITheme
 
+    public var photoControlsViewBackgroundColor = UIColor.white
+    public var photoTitleLabelHidden = false
+
     public var shutterButtonColor = UIColor(red: 0, green: 170.0/255, blue: 1, alpha: 1)
     public var shutterButtonDisabledColor = UIColor.lightGray
     public var mediaRibbonSelectionColor = UIColor(red: 0, green: 170.0/255, blue: 1, alpha: 1)
+    public var mediaThumbnailBackgroundColor = UIColor.clear
     public var focusIndicatorColor = UIColor(red: 0, green: 170.0/255, blue: 1, alpha: 1)
 
     public var removePhotoIcon = PaparazzoUITheme.image(named: "delete")
@@ -30,6 +34,7 @@ public struct PaparazzoUITheme:
     public var cameraContinueButtonTitleFont = UIFont.systemFont(ofSize: 17)
     public var cameraContinueButtonTitleColor = UIColor(red: 0, green: 170.0/255, blue: 1, alpha: 1)
     public var cameraContinueButtonTitleHighlightedColor = UIColor(red: 0, green: 152.0/255, blue: 229.0/255, alpha: 1)
+    public var cameraControlBackgroundColor = UIColor.white
     public var cameraButtonsBackgroundNormalColor = UIColor.white
     public var cameraButtonsBackgroundHighlightedColor = UIColor(white: 1, alpha: 0.6)
     public var cameraButtonsBackgroundDisabledColor = UIColor(white: 1, alpha: 0.6)
