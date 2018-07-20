@@ -56,6 +56,6 @@ public protocol MediaPickerModule: class {
     var onCropCancel: (() -> ())? { get set }
     var onContinueButtonTap: (() -> ())? { get set }
 
-    var onFinish: (([MediaPickerItem]) -> ())? { get set }
+    var onFinish: (([MediaPickerItem], MediaPickerItem?) -> ())? { get set }
     var onCancel: (() -> ())? { get set }
 }

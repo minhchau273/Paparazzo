@@ -21,6 +21,8 @@ final class MediaPickerPresenter: MediaPickerModule {
             }
         }
     }
+
+    var selectedItem: MediaPickerItem?
     
     // MARK: - MediaPickerModule
 
@@ -32,7 +34,7 @@ final class MediaPickerPresenter: MediaPickerModule {
     var onCropFinish: (() -> ())?
     var onCropCancel: (() -> ())?
     var onContinueButtonTap: (() -> ())?
-    var onFinish: (([MediaPickerItem]) -> ())?
+    var onFinish: (([MediaPickerItem], MediaPickerItem?) -> ())?
     var onCancel: (() -> ())?
     
     func setContinueButtonTitle(_ title: String) {
@@ -123,7 +125,7 @@ final class MediaPickerPresenter: MediaPickerModule {
     
     func finish() {
         cameraModuleInput.setFlashEnabled(false, completion: nil)
-        onFinish?(interactor.items)
+        onFinish?(interactor.items, selectedItem)
     }
 
     // MARK: - Private
@@ -228,6 +230,7 @@ final class MediaPickerPresenter: MediaPickerModule {
         }
         
         view?.onItemSelect = { [weak self] item in
+            self?.selectedItem = item
             self?.interactor.selectItem(item)
             self?.updateAutocorrectionStatusForItem(item)
             self?.adjustViewForSelectedItem(item, animated: true, scrollToSelected: true)
@@ -244,6 +247,7 @@ final class MediaPickerPresenter: MediaPickerModule {
         }
         
         view?.onCameraThumbnailTap = { [weak self] in
+            self?.selectedItem = nil
             self?.interactor.selectItem(nil)
             self?.view?.setMode(.camera)
             self?.view?.scrollToCameraThumbnail(animated: true)
@@ -402,6 +406,7 @@ final class MediaPickerPresenter: MediaPickerModule {
     }
     
     private func selectCamera() {
+        selectedItem = nil
         interactor.selectItem(nil)
         view?.setMode(.camera)
         view?.scrollToCameraThumbnail(animated: false)

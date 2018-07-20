@@ -26,7 +26,7 @@ public final class PaparazzoFacade {
                     module?.dismissModule()
                     onCancel?()
                 }
-                module.onFinish = { [weak module] items in
+                module.onFinish = { [weak module] items, selectedItem in
                     module?.dismissModule()
                     onFinish(items)
                 }

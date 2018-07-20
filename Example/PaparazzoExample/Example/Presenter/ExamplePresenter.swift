@@ -89,7 +89,7 @@ final class ExamplePresenter {
                 module?.onCancel = {
                     module?.dismissModule()
                 }
-                module?.onFinish = { items in
+                module?.onFinish = { items, selectedItem in
                     module?.dismissModule()
                 }
             }
@@ -200,7 +200,7 @@ final class ExamplePresenter {
             }
         }
         
-        module.onFinish = { [weak module] items in
+        module.onFinish = { [weak module] items, selectedItem in
             debugPrint("media picker did finish with \(items.count) items:")
             items.forEach { debugPrint($0) }
             self.items = items
