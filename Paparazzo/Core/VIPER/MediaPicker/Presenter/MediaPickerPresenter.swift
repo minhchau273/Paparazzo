@@ -94,6 +94,10 @@ final class MediaPickerPresenter: MediaPickerModule {
     func setThumbnailsAlwaysVisible(_ alwaysVisible: Bool) {
         thumbnailsAlwaysVisible = alwaysVisible
     }
+
+    func setCameraButtonAlwaysVisible(_ alwaysVisible: Bool) {
+        cameraButtonAlwaysVisible = alwaysVisible
+    }
     
     func removeItem(_ item: MediaPickerItem) {
         
@@ -103,7 +107,7 @@ final class MediaPickerPresenter: MediaPickerModule {
         let itemToSelectAfterRemoval = itemWasSelected ? adjacentItem : interactor.selectedItem
         
         view?.removeItem(item)
-        view?.setCameraButtonVisible(interactor.canAddItems())
+        view?.setCameraButtonVisible(interactor.canAddItems() || (cameraButtonAlwaysVisible && interactor.maxItemsCount == nil))
         
         if let itemToSelectAfterRemoval = itemToSelectAfterRemoval {
             view?.selectItem(itemToSelectAfterRemoval)
@@ -135,6 +139,11 @@ final class MediaPickerPresenter: MediaPickerModule {
     private var thumbnailsAlwaysVisible: Bool = false {
         didSet {
             updateThumbnailsVisibility()
+        }
+    }
+    private var cameraButtonAlwaysVisible: Bool = false {
+        didSet {
+            updateCameraButtonVisibility()
         }
     }
     private func setUpView() {
@@ -176,7 +185,7 @@ final class MediaPickerPresenter: MediaPickerModule {
         
         if items.count > 0 {
         
-            view?.setCameraButtonVisible(interactor.canAddItems())
+            view?.setCameraButtonVisible(interactor.canAddItems() || (cameraButtonAlwaysVisible && interactor.maxItemsCount == nil))
             
             view?.addItems(items, animated: false) { [weak self] in
                 let selectedItem = self?.interactor.selectedItem
@@ -404,6 +413,10 @@ final class MediaPickerPresenter: MediaPickerModule {
     private func updateThumbnailsVisibility() {
         view?.setShowPreview(interactor.maxItemsCount != 1 || thumbnailsAlwaysVisible)
     }
+
+    private func updateCameraButtonVisibility() {
+        view?.setCameraButtonVisible(interactor.canAddItems() || (cameraButtonAlwaysVisible && interactor.maxItemsCount == nil))
+    }
     
     private func selectCamera() {
         selectedItem = nil
@@ -428,7 +441,7 @@ final class MediaPickerPresenter: MediaPickerModule {
                 return
             }
             
-            view?.setCameraButtonVisible(canAddMoreItems)
+            view?.setCameraButtonVisible(canAddMoreItems || (strongSelf.cameraButtonAlwaysVisible && strongSelf.interactor.maxItemsCount == nil))
             
             if fromCamera && canAddMoreItems {
                 view?.setMode(.camera)
