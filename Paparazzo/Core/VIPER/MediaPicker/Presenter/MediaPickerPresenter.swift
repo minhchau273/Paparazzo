@@ -516,7 +516,8 @@ final class MediaPickerPresenter: MediaPickerModule {
                     image: croppedImageSource,
                     source: item.source
                 )
-                
+
+                self?.selectedItem = croppedItem
                 self?.interactor.updateItem(croppedItem)
                 self?.view?.updateItem(croppedItem)
                 self?.adjustPhotoTitleForItem(croppedItem)
