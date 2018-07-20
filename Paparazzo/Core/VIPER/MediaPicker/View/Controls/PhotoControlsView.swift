@@ -25,7 +25,7 @@ final class PhotoControlsView: UIView, ThemeConfigurable {
     // MARK: UIView
     
     override init(frame: CGRect) {
-        self.mode = [.hasRemoveButton, .hasCropButton]
+        self.mode = [.hasCropButton]
         
         super.init(frame: frame)
         

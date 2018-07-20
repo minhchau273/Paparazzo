@@ -54,6 +54,7 @@ public final class MediaPickerMarshrouteAssemblyImpl: BasePaparazzoAssembly, Med
         viewController.setTheme(overridenTheme ?? theme)
         viewController.setShowsCropButton(data.cropEnabled)
         viewController.setShowsAutocorrectButton(data.autocorrectEnabled)
+        viewController.setShowsRemoveButton(data.removeEnabled)
         viewController.setHapticFeedbackEnabled(data.hapticFeedbackEnabled)
         
         presenter.view = viewController
