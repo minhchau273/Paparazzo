@@ -9,16 +9,18 @@ public struct PaparazzoUITheme:
 {
     public init() {}
 
+    public static var tintColor = UIColor(red: 0, green: 170.0/255, blue: 1, alpha: 1)
+
     // MARK: - MediaPickerRootModuleUITheme
 
     public var photoControlsViewBackgroundColor = UIColor.white
     public var photoTitleLabelHidden = false
 
-    public var shutterButtonColor = UIColor(red: 0, green: 170.0/255, blue: 1, alpha: 1)
+    public var shutterButtonColor = tintColor
     public var shutterButtonDisabledColor = UIColor.lightGray
-    public var mediaRibbonSelectionColor = UIColor(red: 0, green: 170.0/255, blue: 1, alpha: 1)
+    public var mediaRibbonSelectionColor = tintColor
     public var mediaThumbnailBackgroundColor = UIColor.clear
-    public var focusIndicatorColor = UIColor(red: 0, green: 170.0/255, blue: 1, alpha: 1)
+    public var focusIndicatorColor = tintColor
 
     public var removePhotoIcon = PaparazzoUITheme.image(named: "delete")
     public var autocorrectPhotoIconInactive = PaparazzoUITheme.image(named: "autocorrect_inactive")
@@ -32,7 +34,7 @@ public struct PaparazzoUITheme:
     public var photoPeepholePlaceholder = PaparazzoUITheme.image(named: "gallery-placeholder")
 
     public var cameraContinueButtonTitleFont = UIFont.systemFont(ofSize: 17)
-    public var cameraContinueButtonTitleColor = UIColor(red: 0, green: 170.0/255, blue: 1, alpha: 1)
+    public var cameraContinueButtonTitleColor = tintColor
     public var cameraContinueButtonTitleHighlightedColor = UIColor(red: 0, green: 152.0/255, blue: 229.0/255, alpha: 1)
     public var cameraControlBackgroundColor = UIColor.white
     public var cameraButtonsBackgroundNormalColor = UIColor.white
@@ -55,7 +57,7 @@ public struct PaparazzoUITheme:
     public var photoLibraryTitleFont = UIFont.boldSystemFont(ofSize: 18)
     public var photoLibraryAlbumsDisclosureIcon = PaparazzoUITheme.image(named: "arrow-down")
     
-    public var photoLibraryItemSelectionColor = UIColor(red: 0, green: 170.0/255, blue: 1, alpha: 1)
+    public var photoLibraryItemSelectionColor = tintColor
     public var photoCellBackgroundColor = UIColor.RGB(red: 215, green: 215, blue: 215)
     
     public var iCloudIcon = PaparazzoUITheme.image(named: "icon-cloud")

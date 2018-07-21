@@ -40,7 +40,7 @@ final class AccessDeniedView: UIView, ThemeConfigurable {
         messageLabel.numberOfLines = 0
         messageLabel.textAlignment = .center
         
-        button.backgroundColor = UIColor.RGB(red: 0, green: 170, blue: 255, alpha: 1)
+        button.backgroundColor = PaparazzoUITheme.tintColor
         button.layer.cornerRadius = 4
         button.setTitleColor(.white, for: .normal)
         button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)

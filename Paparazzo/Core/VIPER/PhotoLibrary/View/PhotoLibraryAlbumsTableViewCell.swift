@@ -10,7 +10,7 @@ final class PhotoLibraryAlbumsTableViewCell: UITableViewCell {
     private let imageSize = CGSize(width: 44, height: 44)
     private let imageToTitleSpacing: CGFloat = 16
     private let defaultLabelColor = UIColor.RGB(red: 51, green: 51, blue: 51)
-    private let selectedLabelColor = UIColor.RGB(red: 0, green: 170, blue: 255)
+    private let selectedLabelColor = PaparazzoUITheme.tintColor
     
     // MARK: - Subviews
     private let label = UILabel()
