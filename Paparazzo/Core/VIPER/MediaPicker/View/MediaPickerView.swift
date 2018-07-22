@@ -348,6 +348,11 @@ final class MediaPickerView: UIView, ThemeConfigurable {
     
     func selectItem(_ item: MediaPickerItem) {
         thumbnailRibbonView.selectMediaItem(item)
+        if let imageSource = item.image as? LocalImageSource {
+            let isDefault = !imageSource.defaultImageName.isEmpty
+            setEnableAutocorrectButton(!isDefault)
+            setEnableCropButton(!isDefault)
+        }
     }
     
     func moveItem(from sourceIndex: Int, to destinationIndex: Int) {
@@ -446,6 +451,22 @@ final class MediaPickerView: UIView, ThemeConfigurable {
             photoControlsView.mode.remove(.hasAutocorrectButton)
         }
     }
+
+    func setShowsRemoveButton(_ showsRemoveButton: Bool) {
+      if showsRemoveButton {
+        photoControlsView.mode.insert(.hasRemoveButton)
+      } else {
+        photoControlsView.mode.remove(.hasRemoveButton)
+      }
+    }
+
+    func setEnableAutocorrectButton(_ enabled: Bool) {
+        photoControlsView.setAutocorrectButtonEnabled(enabled)
+    }
+
+    func setEnableCropButton(_ enabled: Bool) {
+        photoControlsView.setCropButtonEnabled(enabled)
+    }
     
     func setShowsPreview(_ showsPreview: Bool) {
         self.showsPreview = showsPreview
@@ -467,6 +488,11 @@ final class MediaPickerView: UIView, ThemeConfigurable {
         
         thumbnailRibbonView.onPhotoItemSelect = { [weak self] mediaPickerItem in
             self?.onItemSelect?(mediaPickerItem)
+            if let imageSource = mediaPickerItem.image as? LocalImageSource {
+                let isDefault = !imageSource.defaultImageName.isEmpty
+                self?.setEnableAutocorrectButton(!isDefault)
+                self?.setEnableCropButton(!isDefault)
+            }
         }
         
         thumbnailRibbonView.onCameraItemSelect = { [weak self] in

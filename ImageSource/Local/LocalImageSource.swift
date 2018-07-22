@@ -5,12 +5,14 @@ import MobileCoreServices
 public final class LocalImageSource: ImageSource {
     
     public let path: String
+    public let defaultImageName: String
     
     // MARK: - Init
     
-    public init(path: String, previewImage: CGImage? = nil) {
+    public init(path: String, previewImage: CGImage? = nil, defaultImageName: String = "") {
         self.path = path
         self.previewImage = previewImage
+        self.defaultImageName = defaultImageName
     }
     
     // MARK: - ImageSource

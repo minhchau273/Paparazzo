@@ -43,7 +43,8 @@ public protocol MediaPickerModule: class {
     
     func setCropMode(_: MediaPickerCropMode)
     func setThumbnailsAlwaysVisible(_: Bool)
-    
+    func setCameraButtonAlwaysVisible(_: Bool)
+
     func removeItem(_: MediaPickerItem)
     
     // startIndex - index of element in previous array of MediaPickerItem, new elements were added after that index
@@ -56,6 +57,6 @@ public protocol MediaPickerModule: class {
     var onCropCancel: (() -> ())? { get set }
     var onContinueButtonTap: (() -> ())? { get set }
 
-    var onFinish: (([MediaPickerItem]) -> ())? { get set }
+    var onFinish: (([MediaPickerItem], MediaPickerItem?) -> ())? { get set }
     var onCancel: (() -> ())? { get set }
 }

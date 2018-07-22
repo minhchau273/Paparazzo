@@ -25,7 +25,7 @@ final class PhotoControlsView: UIView, ThemeConfigurable {
     // MARK: UIView
     
     override init(frame: CGRect) {
-        self.mode = [.hasRemoveButton, .hasCropButton]
+        self.mode = [.hasCropButton]
         
         super.init(frame: frame)
         
@@ -116,6 +116,14 @@ final class PhotoControlsView: UIView, ThemeConfigurable {
     
     func setAutocorrectButtonSelected(_ selected: Bool) {
         autocorrectButton.isSelected = selected
+    }
+
+    func setAutocorrectButtonEnabled(_ enabled: Bool) {
+        autocorrectButton.isEnabled = enabled
+    }
+
+    func setCropButtonEnabled(_ enabled: Bool) {
+        cropButton.isEnabled = enabled
     }
     
     // MARK: - Private
