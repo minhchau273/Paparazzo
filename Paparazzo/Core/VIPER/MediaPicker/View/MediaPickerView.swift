@@ -352,6 +352,9 @@ final class MediaPickerView: UIView, ThemeConfigurable {
             let isDefault = !imageSource.defaultImageName.isEmpty
             setEnableAutocorrectButton(!isDefault)
             setEnableCropButton(!isDefault)
+        } else {
+            setEnableAutocorrectButton(true)
+            setEnableCropButton(true)
         }
     }
     
@@ -492,6 +495,9 @@ final class MediaPickerView: UIView, ThemeConfigurable {
                 let isDefault = !imageSource.defaultImageName.isEmpty
                 self?.setEnableAutocorrectButton(!isDefault)
                 self?.setEnableCropButton(!isDefault)
+            } else {
+                self?.setEnableAutocorrectButton(true)
+                self?.setEnableCropButton(true)
             }
         }
         
