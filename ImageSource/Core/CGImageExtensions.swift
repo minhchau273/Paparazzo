@@ -5,7 +5,7 @@ public extension CGImage {
     
     func imageFixedForOrientation(_ orientation: ExifOrientation) -> CGImage? {
         
-        let ciContext = CIContext.fixed_context(options: [kCIContextUseSoftwareRenderer: false])
+        let ciContext = CIContext.fixed_context(options: [convertFromCIContextOption(CIContextOption.useSoftwareRenderer): false])
         let ciImage = CIImage(cgImage: self).oriented(forExifOrientation: Int32(orientation.rawValue))
         
         return ciContext.createCGImage(ciImage, from: ciImage.extent)
@@ -77,4 +77,9 @@ public enum ExifOrientation: Int {
             return false
         }
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromCIContextOption(_ input: CIContextOption) -> String {
+	return input.rawValue
 }

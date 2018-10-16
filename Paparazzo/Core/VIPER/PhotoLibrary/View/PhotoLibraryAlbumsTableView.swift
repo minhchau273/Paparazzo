@@ -52,7 +52,7 @@ final class PhotoLibraryAlbumsTableView: UIView, UITableViewDataSource, UITableV
     
     func selectAlbum(withId id: String) {
         
-        let indexPathsToReload = [selectedAlbumId, id].flatMap { albumId in
+        let indexPathsToReload = [selectedAlbumId, id].compactMap { albumId in
             cellDataList.index(where: { $0.identifier == albumId }).flatMap { IndexPath(row: $0, section: 0) }
         }
         

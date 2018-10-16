@@ -89,7 +89,7 @@ final class CroppedImageSource: ImageSource {
     
     // MARK: - Private
     
-    private let ciContext = CIContext.fixed_context(options: [kCIContextUseSoftwareRenderer: false])
+    private let ciContext = CIContext.fixed_context(options: [convertFromCIContextOption(CIContextOption.useSoftwareRenderer): false])
     private let imageStorage: ImageStorage
     private var croppedImage: LocalImageSource?
     
@@ -218,4 +218,9 @@ final class CroppedImageSource: ImageSource {
             from: CGRect(origin: .zero, size: size)
         )
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromCIContextOption(_ input: CIContextOption) -> String {
+	return input.rawValue
 }

@@ -12,7 +12,7 @@ final class CameraOutputGLKView: GLKView, CameraCaptureOutputHandler {
     
     init(captureSession: AVCaptureSession, outputOrientation: ExifOrientation, eaglContext: EAGLContext) {
         
-        ciContext = CIContext(eaglContext: eaglContext, options: [kCIContextWorkingColorSpace: NSNull()])
+        ciContext = CIContext(eaglContext: eaglContext, options: convertToOptionalCIContextOptionDictionary([convertFromCIContextOption(CIContextOption.workingColorSpace): NSNull()]))
         orientation = outputOrientation
         
         super.init(frame: .zero, context: eaglContext)
@@ -106,4 +106,15 @@ final class CameraOutputGLKView: GLKView, CameraCaptureOutputHandler {
         
         return drawRect
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalCIContextOptionDictionary(_ input: [String: Any]?) -> [CIContextOption: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (CIContextOption(rawValue: key), value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromCIContextOption(_ input: CIContextOption) -> String {
+	return input.rawValue
 }
